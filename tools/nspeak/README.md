@@ -1,10 +1,8 @@
 # nspeak
 
-Speak text aloud from the command line with Microsoft's neural voices — no audio file to name,
-manage, or clean up.
+Speak text aloud from the command line using Microsoft's neural TTS voices — no audio file to name, manage, or clean up.
 
-`nspeak` synthesizes the speech to a temporary MP3, plays it with the system player, and deletes
-the file when playback ends. The only thing you type is the sentence.
+`nspeak` synthesizes speech to a temporary MP3, plays it through your system's default player, and deletes the file the moment playback ends. You type the sentence; it handles the rest.
 
 ```console
 $ nspeak "There's a phone call for you."

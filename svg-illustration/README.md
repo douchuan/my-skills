@@ -1,6 +1,8 @@
 # SVG Illustration Skill
 
-A project-level Claude Code Skill for generating and revising consistent, technically accurate SVG illustrations for a GitBook technical book.
+A Claude Code skill for generating consistent, technically accurate SVG illustrations designed for a GitBook technical book.
+
+Every illustration follows a fixed design system — white background, a curated color palette, clean flat-vector aesthetics, and readable typography — so diagrams across the entire book feel like they belong to the same family. Describe a concept or provide an existing diagram, and the skill produces a complete, self-contained SVG file ready to drop into your documentation.
 
 ## Install in a project
 

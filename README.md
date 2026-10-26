@@ -1,10 +1,13 @@
 # my-skills
 
-
 ## english-coach
 
-英语笔友 skill，帮你提升英语写作能力。
+A proofreading skill for English articles. Checks spelling, grammar, and word choice, then appends a structured review report to your original file — explanations in Chinese, original text preserved.
 
 ## svg-illustration
 
-为 GitBook 技术教材生成 SVG 插图的 Skill。
+Generates consistent, technically accurate SVG illustrations for GitBook technical books, following a fixed design system with a clean flat-vector aesthetic.
+
+## nspeak
+
+A command-line TTS tool that speaks text aloud using Microsoft's neural voices. Synthesizes to a temp MP3, plays it, and deletes it automatically — zero file management.

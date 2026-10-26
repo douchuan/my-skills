@@ -1,10 +1,10 @@
 # English Coach
 
-一个用于 Claude Code 的英语文章校对 Skill。
+A Claude Code skill for proofreading English articles and appending a structured review report.
 
-你只需要写好一篇英文文章，然后调用 Skill，它就会检查拼写、用词和语法错误，提供更自然、更接近英语母语者习惯的表达建议，并将完整的批改报告追加到原 Markdown 文件末尾。
+Write your English article in a Markdown file, invoke the skill, and it will check spelling, word choice, and grammar — then suggest more natural, native-sounding alternatives. The full review is appended to the end of the original file, leaving your article untouched.
 
-**核心理念：保留原文，解释错误，帮助你持续进步。**
+**Core philosophy: preserve your voice, explain every finding, help you improve with each pass.**
 
 ## 功能特性
 
