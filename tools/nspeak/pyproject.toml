@@ -1,0 +1,21 @@
+[project]
+name = "nspeak"
+version = "0.1.0"
+description = "Speak text aloud with Microsoft neural voices, without managing audio files."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "edge-tts>=6.1.0",
+]
+
+[project.scripts]
+nspeak = "nspeak._cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.17.2",
+]
