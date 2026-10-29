@@ -3,11 +3,33 @@
 import shutil
 import subprocess
 import sys
+import time
 import wave
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 
-def render_script(script, force: bool = False, segment_ids: set[str] | None = None) -> list[Path]:
+def _render_one(provider, segment, character, destination, pause_after) -> tuple[Path, Exception | None, str | None]:
+    """Render a single segment with retry on rate limits. Returns (destination, error_or_None, manifest_entry_or_None)."""
+    max_retries = 3
+    last_error = None
+    for attempt in range(max_retries):
+        try:
+            provider.synthesize(segment, character, destination)
+            entry = f"{segment.id}\t{destination.name}\t{pause_after}"
+            return destination, None, entry
+        except Exception as exc:
+            last_error = exc
+            # Retry on rate limit errors with backoff
+            if "RateLimitError" in type(exc).__name__ or "Throttling" in str(exc):
+                if attempt < max_retries - 1:
+                    time.sleep(2 ** attempt)
+                    continue
+            break
+    return destination, last_error, None
+
+
+def render_script(script, force: bool = False, segment_ids: set[str] | None = None, max_workers: int = 2) -> list[Path]:
     from novel_tts.providers import create_provider
 
     provider = create_provider(
@@ -15,21 +37,43 @@ def render_script(script, force: bool = False, segment_ids: set[str] | None = No
         config=script.tts,
     )
     script.output_dir.mkdir(parents=True, exist_ok=True)
+
+    # First pass: collect which segments need rendering vs already cached
+    to_render: list[tuple] = []
     rendered: list[Path] = []
-    manifest_lines = []
+    manifest_entries: dict[str, str] = {}
+
     for segment in script.segments:
         extension = "wav" if script.tts.format == "wav" else script.tts.format
         destination = script.output_dir / f"{segment.id}.{extension}"
-        # Skip existing files only if not forced and not in the selective set
         force_this = force or (segment_ids is not None and segment.id in segment_ids)
+        entry = f"{segment.id}\t{destination.name}\t{segment.pause_after}"
         if destination.exists() and destination.stat().st_size > 0 and not force_this:
             rendered.append(destination)
-            manifest_lines.append(f"{segment.id}\t{destination.name}\t{segment.pause_after}")
-            continue
-        character = script.characters[segment.speaker]
-        provider.synthesize(segment, character, destination)
-        rendered.append(destination)
-        manifest_lines.append(f"{segment.id}\t{destination.name}\t{segment.pause_after}")
+            manifest_entries[segment.id] = entry
+        else:
+            character = script.characters[segment.speaker]
+            to_render.append((segment, character, destination))
+
+    # Second pass: render remaining segments concurrently
+    if to_render:
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            futures = {
+                executor.submit(_render_one, provider, seg, char, dest, seg.pause_after): dest
+                for seg, char, dest in to_render
+            }
+            for future in as_completed(futures):
+                dest, error, entry = future.result()
+                if error:
+                    raise error
+                rendered.append(dest)
+                manifest_entries[dest.stem] = entry
+
+    # Write manifest in original segment order
+    manifest_lines = []
+    for segment in script.segments:
+        if segment.id in manifest_entries:
+            manifest_lines.append(manifest_entries[segment.id])
     (script.output_dir / "manifest.tsv").write_text(
         "segment_id\tfile\tpause_after_seconds\n" + "\n".join(manifest_lines) + "\n",
         encoding="utf-8",
