@@ -90,6 +90,7 @@ def load_script(path: str | Path) -> Script:
                 emotion=str(item.get("emotion", "neutral")).lower(),
                 rate=rate,
                 pause_after=pause_after,
+                dialect=str(item.get("dialect", "")).lower(),
             )
         )
 

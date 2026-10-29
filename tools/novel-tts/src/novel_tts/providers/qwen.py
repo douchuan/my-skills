@@ -106,6 +106,19 @@ _EMOTION_INSTRUCTIONS = {
     "hush": "Speak in a low, quiet tone, as if trying not to be overheard.",
 }
 
+_DIALECT_INSTRUCTIONS = {
+    "chongqing": "Speak in Chongqing dialect (重庆话).",
+    "sichuan": "Speak in Sichuan dialect (四川话).",
+    "beijing": "Speak with a Beijing accent (北京腔).",
+    "dongbei": "Speak with a Northeastern accent (东北话).",
+    "cantonese": "Speak in Cantonese (粤语).",
+    "shanghai": "Speak with a Shanghai accent (上海话).",
+    "tianjin": "Speak in Tianjin dialect (天津话).",
+    "henan": "Speak in Henan dialect (河南话).",
+    "shaanxi": "Speak in Shaanxi dialect (陕西话).",
+    "shandong": "Speak in Shandong dialect (山东话).",
+}
+
 
 class QwenTTSProvider(TTSProvider):
     """Generate one audio file per script segment using the DashScope SDK."""
@@ -170,6 +183,10 @@ class QwenTTSProvider(TTSProvider):
     @staticmethod
     def _build_instruction(segment: Segment) -> str:
         parts = [_EMOTION_INSTRUCTIONS.get(segment.emotion, _EMOTION_INSTRUCTIONS["neutral"])]
+        if segment.dialect and segment.dialect in _DIALECT_INSTRUCTIONS:
+            parts.append(_DIALECT_INSTRUCTIONS[segment.dialect])
+        elif segment.dialect:
+            parts.append(f"Speak in {segment.dialect} dialect.")
         if segment.rate < 0.95:
             parts.append("Speak at a slower pace.")
         elif segment.rate > 1.05:

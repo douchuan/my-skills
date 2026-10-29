@@ -21,7 +21,7 @@ characters:
     voice: longsanshu_v3.1
   clarisse:
     name: Clarisse (Mother)
-    voice: loongstella_v3.1
+    voice: longanhuan_v3.1 
   jules:
     name: Uncle Jules
     voice: longsanshu_v3.1
@@ -192,6 +192,7 @@ segments:
   - id: clarisse-good-jules
     speaker: clarisse
     emotion: hopeful
+    dialect: chongqing
     rate: 0.95
     text: "等我们的好于勒回来了，家里就会富裕的，总算这一家子出了一个能人！"
     pause_after: 0.7
@@ -321,6 +322,7 @@ segments:
   - id: clarisse-refusal
     speaker: clarisse
     emotion: reluctant
+    dialect: chongqing
     rate: 0.95
     text: "我怕吃了胃不舒服，只给孩子们买点吧，但别吃太多，吃多了会生病。"
     pause_after: 0.4
@@ -328,6 +330,7 @@ segments:
   - id: clarisse-joseph-skip
     speaker: clarisse
     emotion: dismissive
+    dialect: chongqing
     rate: 0.95
     text: "约瑟夫嘛，就不必吃了，别把男孩子惯坏了。"
     pause_after: 0.6
@@ -349,6 +352,7 @@ segments:
   - id: clarisse-mutter
     speaker: clarisse
     emotion: exasperated
+    dialect: chongqing
     rate: 0.95
     text: "他还是老老实实待着为妙。"
     pause_after: 0.7
@@ -378,6 +382,7 @@ segments:
   - id: clarisse-which-jules
     speaker: clarisse
     emotion: confused
+    dialect: chongqing
     rate: 0.95
     text: "哪个于勒？"
     pause_after: 0.5
@@ -406,6 +411,7 @@ segments:
   - id: clarisse-deny
     speaker: clarisse
     emotion: agitated
+    dialect: chongqing
     rate: 0.95
     text: "你真疯了！明明知道那不是他，干吗还说这些蠢话？"
     pause_after: 0.5
@@ -441,6 +447,7 @@ segments:
   - id: clarisse-confirm-and-warn
     speaker: clarisse
     emotion: frightened
+    dialect: chongqing
     rate: 0.9
     text: "我想就是他，你待会儿去向船长打听打听。可一定要特别小心，别让那无赖再来拖累我们。"
     pause_after: 0.7
@@ -541,6 +548,7 @@ segments:
   - id: clarisse-sit-still
     speaker: clarisse
     emotion: hushed
+    dialect: chongqing
     rate: 0.9
     text: "快坐下，别让旁人看出来了。"
     pause_after: 0.5
@@ -583,6 +591,7 @@ segments:
   - id: clarisse-send-children-away
     speaker: clarisse
     emotion: resolute
+    dialect: chongqing
     rate: 0.95
     text: "必须把孩子们支开。约瑟夫既然已经全知道，就让他去把他们领回来，千万要小心，别让女婿知道这件事。"
     pause_after: 0.6
@@ -611,6 +620,7 @@ segments:
   - id: clarisse-denounce-jules
     speaker: clarisse
     emotion: furious
+    dialect: chongqing
     rate: 1.0
     text: "我早就知道这个骗子干不成任何正经事，早晚会来拖累我们，谁能指望达弗朗什家的人会有点出息？"
     pause_after: 0.7
@@ -625,6 +635,7 @@ segments:
   - id: clarisse-pay-and-avoid
     speaker: clarisse
     emotion: agitated
+    dialect: chongqing
     rate: 0.95
     text: "给约瑟夫一点钱，叫他赶快去把吃牡蛎的钱付清。现在，只差被那个乞丐认出来了，真被他认出来，这船上就有热闹好看了。我们赶紧到船的那一头去，别让那家伙靠近我们。"
     pause_after: 0.6
@@ -725,6 +736,7 @@ segments:
   - id: clarisse-three-francs
     speaker: clarisse
     emotion: surprised
+    dialect: chongqing
     rate: 0.95
     text: "怎么花了三个法郎？这不可能。"
     pause_after: 0.5
@@ -753,6 +765,7 @@ segments:
   - id: clarisse-rage-tip
     speaker: clarisse
     emotion: furious
+    dialect: chongqing
     rate: 1.0
     text: "你简直就是疯了！把半个法郎给了那个家伙，给了那个无赖！"
     pause_after: 0.6

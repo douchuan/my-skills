@@ -28,6 +28,7 @@ class Segment:
     emotion: str = "neutral"
     rate: float = 1.0
     pause_after: float = 0.0
+    dialect: str = ""
 
 
 @dataclass(frozen=True)
