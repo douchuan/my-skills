@@ -24,7 +24,6 @@ class AzureTTSProvider(TTSProvider):
             ) from exc
         self.speechsdk = speechsdk
         self.speech_config = speechsdk.SpeechConfig(subscription=key, region=region)
-        self.speech_config.speech_synthesis_voice_name = character.voice if False else ""
 
     def synthesize(self, segment: Segment, character: Character, destination: Path) -> None:
         speechsdk = self.speechsdk

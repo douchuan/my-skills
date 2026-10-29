@@ -29,13 +29,14 @@ def _render_one(
             provider.synthesize(segment, character, destination)
             entry = f"{segment.id}\t{destination.name}\t{pause_after}"
             return destination, None, entry
-        except Exception as exc:
+        except RuntimeError as exc:
             last_error = exc
             # Retry on rate limit errors with backoff
-            if "RateLimitError" in type(exc).__name__ or "Throttling" in str(exc):
-                if attempt < max_retries - 1:
-                    time.sleep(2**attempt)
-                    continue
+            if (
+                "RateLimitError" in type(exc).__name__ or "Throttling" in str(exc)
+            ) and attempt < max_retries - 1:
+                time.sleep(2**attempt)
+                continue
             break
     return destination, last_error, None
 

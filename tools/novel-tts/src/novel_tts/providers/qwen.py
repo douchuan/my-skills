@@ -151,25 +151,27 @@ class QwenTTSProvider(TTSProvider):
             connect_kwargs["parameters"] = parameters
 
         try:
-            with destination.open("wb") as audio_file:
-                with self.client.audio.tts.connect(**connect_kwargs) as session:
-                    session.send_text(segment.text)
-                    session.flush()
-                    session.stop()
-                    for chunk in session.audio_chunks():
-                        audio_file.write(chunk)
+            with (
+                destination.open("wb") as audio_file,
+                self.client.audio.tts.connect(**connect_kwargs) as session,
+            ):
+                session.send_text(segment.text)
+                session.flush()
+                session.stop()
+                for chunk in session.audio_chunks():
+                    audio_file.write(chunk)
         except Exception as exc:
             destination.unlink(missing_ok=True)
             # Provide a clearer hint when the voice is incompatible with the model.
-            if "InvalidParameter" in str(exc) or "411" in str(exc):
-                if (
-                    self.config.model == "qwen-audio-3.1-tts-flash"
-                    and character.voice not in _KNOWN_VOICES_31
-                ):
-                    raise RuntimeError(
-                        f"Voice '{character.voice}' is not compatible with model '{self.config.model}'. "
-                        f"Use a _v3.1 voice (e.g. {', '.join(sorted(_KNOWN_VOICES_31))})."
-                    ) from exc
+            if (
+                ("InvalidParameter" in str(exc) or "411" in str(exc))
+                and self.config.model == "qwen-audio-3.1-tts-flash"
+                and character.voice not in _KNOWN_VOICES_31
+            ):
+                raise RuntimeError(
+                    f"Voice '{character.voice}' is not compatible with model '{self.config.model}'. "
+                    f"Use a _v3.1 voice (e.g. {', '.join(sorted(_KNOWN_VOICES_31))})."
+                ) from exc
             raise
 
         if not destination.exists() or destination.stat().st_size == 0:

@@ -63,10 +63,13 @@ def render(
         console.print(f"[green]All {len(result.paths)} segments already cached.[/green]")
 
 
+_DEFAULT_SEGMENT_IDS: list[str] = typer.Argument(...)
+
+
 @app.command()
 def regenerate(
     script: Path,
-    segment_ids: list[str] = typer.Argument(..., help="Segment IDs to re-render."),
+    segment_ids: list[str] = _DEFAULT_SEGMENT_IDS,
 ):
     """Re-render specific segments by their IDs, ignoring cached audio."""
     loaded = _load(script)
