@@ -383,7 +383,7 @@ segments:
     speaker: clarisse
     emotion: confused
     dialect: chongqing
-    rate: 0.95
+    rate: 0.9
     text: "哪个于勒？"
     pause_after: 0.5
 
@@ -448,7 +448,7 @@ segments:
     speaker: clarisse
     emotion: frightened
     dialect: chongqing
-    rate: 0.9
+    rate: 0.95
     text: "我想就是他，你待会儿去向船长打听打听。可一定要特别小心，别让那无赖再来拖累我们。"
     pause_after: 0.7
 
@@ -549,7 +549,7 @@ segments:
     speaker: clarisse
     emotion: hushed
     dialect: chongqing
-    rate: 0.9
+    rate: 0.95 
     text: "快坐下，别让旁人看出来了。"
     pause_after: 0.5
 
@@ -592,7 +592,7 @@ segments:
     speaker: clarisse
     emotion: resolute
     dialect: chongqing
-    rate: 0.95
+    rate: 0.95 
     text: "必须把孩子们支开。约瑟夫既然已经全知道，就让他去把他们领回来，千万要小心，别让女婿知道这件事。"
     pause_after: 0.6
 

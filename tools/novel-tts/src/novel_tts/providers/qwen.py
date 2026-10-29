@@ -183,14 +183,15 @@ class QwenTTSProvider(TTSProvider):
     @staticmethod
     def _build_instruction(segment: Segment) -> str:
         parts = [_EMOTION_INSTRUCTIONS.get(segment.emotion, _EMOTION_INSTRUCTIONS["neutral"])]
+
         if segment.dialect and segment.dialect in _DIALECT_INSTRUCTIONS:
             parts.append(_DIALECT_INSTRUCTIONS[segment.dialect])
-        elif segment.dialect:
-            parts.append(f"Speak in {segment.dialect} dialect.")
+
         if segment.rate < 0.95:
             parts.append("Speak at a slower pace.")
         elif segment.rate > 1.05:
             parts.append("Speak at a faster pace.")
         else:
             parts.append("Use a natural speaking pace.")
+
         return " ".join(parts)
