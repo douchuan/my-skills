@@ -6,7 +6,15 @@ import sys
 import time
 import wave
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from dataclasses import dataclass
 from pathlib import Path
+
+
+@dataclass(frozen=True)
+class RenderResult:
+    """Result of rendering a script."""
+    paths: list[Path]        # all segment audio files (cached + new)
+    new_count: int           # how many were actually rendered this call
 
 
 def _render_one(provider, segment, character, destination, pause_after) -> tuple[Path, Exception | None, str | None]:
@@ -29,7 +37,7 @@ def _render_one(provider, segment, character, destination, pause_after) -> tuple
     return destination, last_error, None
 
 
-def render_script(script, force: bool = False, segment_ids: set[str] | None = None, max_workers: int = 2) -> list[Path]:
+def render_script(script, force: bool = False, segment_ids: set[str] | None = None, max_workers: int = 2) -> RenderResult:
     from novel_tts.providers import create_provider
 
     provider = create_provider(
@@ -78,7 +86,7 @@ def render_script(script, force: bool = False, segment_ids: set[str] | None = No
         "segment_id\tfile\tpause_after_seconds\n" + "\n".join(manifest_lines) + "\n",
         encoding="utf-8",
     )
-    return rendered
+    return RenderResult(paths=rendered, new_count=len(to_render))
 
 
 def _make_silence(path: Path, duration: float, sample_rate: int = 24000) -> None:
