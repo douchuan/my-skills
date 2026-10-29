@@ -11,6 +11,7 @@ The project includes an Alibaba Cloud Model Studio Qwen TTS provider. An Azure S
 - Set delivery intent, speaking rate, and pauses per segment.
 - Render each segment to an individual audio file and reuse cached output.
 - Join segments for playback in script order.
+- Assemble all segments into a single audio file.
 - Keep provider-specific behavior behind a small provider interface.
 
 ## Requirements
@@ -36,6 +37,7 @@ Create or retrieve an API key in the [Alibaba](https://bailian.console.aliyun.co
 uv run novel-tts validate examples/dream-of-red-chamber.yaml
 uv run novel-tts render examples/dream-of-red-chamber.yaml
 uv run novel-tts play examples/dream-of-red-chamber.yaml
+uv run novel-tts assemble examples/dream-of-red-chamber.yaml
 ```
 
 Use `--force` to regenerate cached segment audio:
@@ -97,11 +99,14 @@ novel-tts voices SCRIPT.yaml
 novel-tts render SCRIPT.yaml [--force]
 novel-tts regenerate SCRIPT.yaml SEGMENT_ID [SEGMENT_ID ...]
 novel-tts play SCRIPT.yaml
+novel-tts assemble SCRIPT.yaml [--force] [--output FILE]
 ```
 
 `voices` prints the configured speaker-to-voice mapping. It does not make a remote API request.
 
 `regenerate` re-renders only the named segments, ignoring any cached audio. Use it to fix a single mis-rendered line without re-synthesizing the entire script.
+
+`assemble` concatenates all segments into a single audio file named after the source script (e.g. `my-novel.yaml` → `my-novel.mp3`). It auto-renders any missing segments first. Use `--force` to re-render everything before assembling, or `--output` / `-o` to override the output filename.
 
 ## Development
 

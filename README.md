@@ -11,3 +11,7 @@ Generates consistent, technically accurate SVG illustrations for GitBook technic
 ## nspeak
 
 A command-line TTS tool that speaks text aloud using Microsoft's neural voices. Synthesizes to a temp MP3, plays it, and deletes it automatically — zero file management.
+
+## novel-tts
+
+A command-line tool for turning scripted novels into multi-character narrated audio.

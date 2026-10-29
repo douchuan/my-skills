@@ -66,7 +66,6 @@ _EMOTION_INSTRUCTIONS = {
     "exasperated": "Speak with irritated frustration, as if at the end of one's patience.",
     "tense": "Speak in a tight, strained tone, with controlled breath and a sense of mounting pressure.",
     "uneasy": "Speak with quiet discomfort and nervous uncertainty, as if something is not quite right.",
-    "confused": "Speak with puzzled uncertainty, with hesitant pauses as if trying to make sense of things.",
     "shaky": "Speak in an unsteady, wavering voice, with tremors and uncertain control.",
     "alarmed": "Speak with sudden alarm and urgency, as if startled by a warning or danger.",
     "agitated": "Speak in a restless, unsettled manner, with nervous energy and uneven pacing.",
@@ -80,7 +79,6 @@ _EMOTION_INSTRUCTIONS = {
     "indifferent": "Speak in a flat, uncaring tone, as if the matter does not matter at all.",
     "horrified": "Speak with intense shock and horror, as if recoiling from something terrible.",
     "choked": "Speak with a tight, constricted throat, words breaking up as if holding back tears or emotion.",
-    "hushed": "Speak in a low, quiet tone, as if in a place where sound must be kept down.",
     "numb": "Speak in a hollow, drained tone, with flat affect as if feeling nothing at all.",
     "stunned": "Speak in a dazed, halting manner, with pauses as if too shocked to react.",
     "resolute": "Speak with firm determination and unwavering resolve, steady and unshakable.",
@@ -88,7 +86,6 @@ _EMOTION_INSTRUCTIONS = {
     "miserable": "Speak in a deeply wretched, sorrowful tone, weighed down by unhappiness.",
     "anger": "Speak with intense anger, with sharp edges and rising force.",
     "furious": "Speak with explosive rage, fierce and barely contained.",
-    "agitated": "Speak in a restless, unsettled manner, with nervous energy and uneven pacing.",
     "quiet": "Speak softly and calmly, with low volume and gentle restraint.",
     "tender": "Speak with soft affection and delicate care, as if handling something precious.",
     "humble": "Speak in a modest, unassuming tone, with no trace of pride or self-importance.",
@@ -102,8 +99,7 @@ _EMOTION_INSTRUCTIONS = {
     "desolate": "Speak in a bleak, empty tone, as if surrounded by loneliness and ruin.",
     "wistful": "Speak with a gentle, bittersweet longing, as if remembering something dear and lost.",
     "mournful": "Speak in a grieving, sorrowful tone, as if in mourning for someone or something lost.",
-    "decisive": "Speak with clear determination and resolve, without hesitation.",
-    "hush": "Speak in a low, quiet tone, as if trying not to be overheard.",
+    "decisive": "Speak with clear determination and resolve, without hesitation."
 }
 
 _DIALECT_INSTRUCTIONS = {

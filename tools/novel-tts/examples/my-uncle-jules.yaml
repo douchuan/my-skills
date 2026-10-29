@@ -381,7 +381,7 @@ segments:
 
   - id: clarisse-which-jules
     speaker: clarisse
-    emotion: confused
+    emotion: trembling 
     dialect: chongqing
     rate: 0.9
     text: "哪个于勒？"
@@ -410,7 +410,7 @@ segments:
 
   - id: clarisse-deny
     speaker: clarisse
-    emotion: agitated
+    emotion: angry 
     dialect: chongqing
     rate: 0.95
     text: "你真疯了！明明知道那不是他，干吗还说这些蠢话？"
@@ -547,7 +547,7 @@ segments:
 
   - id: clarisse-sit-still
     speaker: clarisse
-    emotion: hushed
+    emotion: furious 
     dialect: chongqing
     rate: 0.95 
     text: "快坐下，别让旁人看出来了。"
@@ -590,7 +590,7 @@ segments:
 
   - id: clarisse-send-children-away
     speaker: clarisse
-    emotion: resolute
+    emotion: furious 
     dialect: chongqing
     rate: 0.95 
     text: "必须把孩子们支开。约瑟夫既然已经全知道，就让他去把他们领回来，千万要小心，别让女婿知道这件事。"
@@ -634,9 +634,9 @@ segments:
 
   - id: clarisse-pay-and-avoid
     speaker: clarisse
-    emotion: agitated
+    emotion: furious 
     dialect: chongqing
-    rate: 0.95
+    rate: 1.0
     text: "给约瑟夫一点钱，叫他赶快去把吃牡蛎的钱付清。现在，只差被那个乞丐认出来了，真被他认出来，这船上就有热闹好看了。我们赶紧到船的那一头去，别让那家伙靠近我们。"
     pause_after: 0.6
 
@@ -735,9 +735,9 @@ segments:
 
   - id: clarisse-three-francs
     speaker: clarisse
-    emotion: surprised
+    emotion: furious 
     dialect: chongqing
-    rate: 0.95
+    rate: 1.0
     text: "怎么花了三个法郎？这不可能。"
     pause_after: 0.5
 
@@ -772,7 +772,7 @@ segments:
 
   - id: narrator-father-warns-eyes
     speaker: narrator
-    emotion: hush
+    emotion: neutral 
     rate: 0.95
     text: "她猛然一下就打住了，因为我父亲指着女婿朝她使了个眼色。"
     pause_after: 0.5

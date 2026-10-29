@@ -1,12 +1,15 @@
 """Command-line interface."""
 
+import shutil
+import subprocess
+import tempfile
 from pathlib import Path
 
 import typer
 from rich.console import Console
 from rich.table import Table
 
-from novel_tts.audio import play_script, render_script
+from novel_tts.audio import _make_silence, play_script, render_script
 from novel_tts.script import ScriptError, load_script
 
 app = typer.Typer(no_args_is_help=True, help="Render YAML scripts into multi-character narration.")
@@ -87,3 +90,123 @@ def play(script: Path):
     except Exception as exc:
         console.print(f"[red]Playback failed:[/red] {exc}")
         raise typer.Exit(code=1) from exc
+
+
+@app.command(name="assemble")
+def assemble(
+    script: Path,
+    force: bool = typer.Option(False, "--force", help="Regenerate missing segments before assembling."),
+    output: str | None = typer.Option(None, "--output", "-o", help="Override output filename."),
+):
+    """Assemble rendered segments into a single audio file named after the script."""
+    loaded = _load(script)
+
+    # Render any missing segments first
+    render_result = render_script(loaded, force=force)
+    if render_result.new_count > 0:
+        console.print(f"[green]Rendered {render_result.new_count} new segments.[/green]")
+
+    extension = "wav" if loaded.tts.format == "wav" else loaded.tts.format
+    missing = []
+    for segment in loaded.segments:
+        seg_path = loaded.output_dir / f"{segment.id}.{extension}"
+        if not seg_path.exists():
+            missing.append(segment.id)
+    if missing:
+        console.print(f"[red]Missing audio for segments: {', '.join(missing)}. Run render first.[/red]")
+        raise typer.Exit(code=1)
+
+    # Build the ordered playlist with silence for pauses
+    playlist: list[Path] = []
+    for index, segment in enumerate(loaded.segments):
+        seg_path = loaded.output_dir / f"{segment.id}.{extension}"
+        playlist.append(seg_path)
+        if segment.pause_after > 0:
+            silence = loaded.output_dir / f".assemble-pause-{index}.wav"
+            _make_silence(silence, segment.pause_after, loaded.tts.sample_rate)
+            playlist.append(silence)
+
+    # Determine output path: same name as source YAML, matching audio format
+    if output:
+        out_path = Path(output)
+        if not out_path.is_absolute():
+            out_path = script.parent / out_path
+    else:
+        out_path = script.parent / f"{script.stem}.{extension}"
+
+    ffmpeg = shutil.which("ffmpeg")
+    if not ffmpeg:
+        console.print("[red]ffmpeg is required to assemble audio files.[/red]")
+        raise typer.Exit(code=1)
+
+    # Check if all files are the same format — convert to WAV if mixed
+    all_wav = extension == "wav"
+    if not all_wav:
+        with tempfile.TemporaryDirectory(prefix="novel-tts-assemble-") as tmpdir:
+            tmp_dir = Path(tmpdir)
+            wav_files: list[Path] = []
+            for idx, p in enumerate(playlist):
+                wav_out = tmp_dir / f"{idx:04d}.wav"
+                subprocess.run(
+                    [ffmpeg, "-y", "-i", str(p), "-ar", str(loaded.tts.sample_rate), str(wav_out)],
+                    check=True,
+                    capture_output=True,
+                )
+                wav_files.append(wav_out)
+
+            concat_file = tmp_dir / "list.txt"
+            concat_file.write_text(
+                "".join(f"file '{p.as_posix()}'\n" for p in wav_files),
+                encoding="utf-8",
+            )
+            subprocess.run(
+                [
+                    ffmpeg,
+                    "-y",
+                    "-f",
+                    "concat",
+                    "-safe",
+                    "0",
+                    "-i",
+                    str(concat_file),
+                    "-c",
+                    "copy",
+                    str(out_path),
+                ],
+                check=True,
+                capture_output=True,
+            )
+    else:
+        with tempfile.TemporaryDirectory(prefix="novel-tts-assemble-") as tmpdir:
+            tmp_dir = Path(tmpdir)
+            concat_file = tmp_dir / "list.txt"
+            concat_file.write_text(
+                "".join(f"file '{p.as_posix()}'\n" for p in playlist),
+                encoding="utf-8",
+            )
+            subprocess.run(
+                [
+                    ffmpeg,
+                    "-y",
+                    "-f",
+                    "concat",
+                    "-safe",
+                    "0",
+                    "-i",
+                    str(concat_file),
+                    "-c",
+                    "copy",
+                    str(out_path),
+                ],
+                check=True,
+                capture_output=True,
+            )
+
+    # Clean up temporary silence files
+    for index, segment in enumerate(loaded.segments):
+        if segment.pause_after > 0:
+            silence = loaded.output_dir / f".assemble-pause-{index}.wav"
+            if silence.exists():
+                silence.unlink()
+
+    console.print(f"[green]Assembled {len(loaded.segments)} segments → {out_path}[/green]")
