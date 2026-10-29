@@ -7,7 +7,7 @@ import wave
 from pathlib import Path
 
 
-def render_script(script, force: bool = False) -> list[Path]:
+def render_script(script, force: bool = False, segment_ids: set[str] | None = None) -> list[Path]:
     from novel_tts.providers import create_provider
 
     provider = create_provider(
@@ -20,7 +20,9 @@ def render_script(script, force: bool = False) -> list[Path]:
     for segment in script.segments:
         extension = "wav" if script.tts.format == "wav" else script.tts.format
         destination = script.output_dir / f"{segment.id}.{extension}"
-        if destination.exists() and destination.stat().st_size > 0 and not force:
+        # Skip existing files only if not forced and not in the selective set
+        force_this = force or (segment_ids is not None and segment.id in segment_ids)
+        if destination.exists() and destination.stat().st_size > 0 and not force_this:
             rendered.append(destination)
             manifest_lines.append(f"{segment.id}\t{destination.name}\t{segment.pause_after}")
             continue

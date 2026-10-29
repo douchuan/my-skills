@@ -802,7 +802,7 @@ segments:
 
   - id: narrator-never-again
     speaker: narrator
-    emotion: mournful
+    emotion: sorrowful 
     rate: 0.9
     text: "从此以后，我再也没有见过我父亲的这位老弟！"
     pause_after: 0.8

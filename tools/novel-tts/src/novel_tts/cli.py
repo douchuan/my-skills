@@ -56,6 +56,26 @@ def render(
 
 
 @app.command()
+def regenerate(
+    script: Path,
+    segment_ids: list[str] = typer.Argument(..., help="Segment IDs to re-render."),
+):
+    """Re-render specific segments by their IDs, ignoring cached audio."""
+    loaded = _load(script)
+    valid_ids = {s.id for s in loaded.segments}
+    missing = [sid for sid in segment_ids if sid not in valid_ids]
+    if missing:
+        console.print(f"[red]Unknown segment IDs: {', '.join(missing)}[/red]")
+        raise typer.Exit(code=1)
+    try:
+        paths = render_script(loaded, force=True, segment_ids=set(segment_ids))
+    except Exception as exc:
+        console.print(f"[red]Rendering failed:[/red] {exc}")
+        raise typer.Exit(code=1) from exc
+    console.print(f"[green]Re-rendered {len(paths)} segments to {loaded.output_dir}[/green]")
+
+
+@app.command()
 def play(script: Path):
     """Play rendered segments in script order."""
     loaded = _load(script)

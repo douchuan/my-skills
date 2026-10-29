@@ -44,6 +44,12 @@ Use `--force` to regenerate cached segment audio:
 uv run novel-tts render examples/dream-of-red-chamber.yaml --force
 ```
 
+Re-render specific segments by ID, leaving other cached audio untouched:
+
+```bash
+uv run novel-tts regenerate examples/my-uncle-jules.yaml opening-meet-beggar joseph-intro-story
+```
+
 ## Choose the provider and model
 
 The script defines a provider in its `tts` section:
@@ -89,10 +95,13 @@ Pause durations are represented as separate silence WAV files. If a script uses 
 novel-tts validate SCRIPT.yaml
 novel-tts voices SCRIPT.yaml
 novel-tts render SCRIPT.yaml [--force]
+novel-tts regenerate SCRIPT.yaml SEGMENT_ID [SEGMENT_ID ...]
 novel-tts play SCRIPT.yaml
 ```
 
 `voices` prints the configured speaker-to-voice mapping. It does not make a remote API request.
+
+`regenerate` re-renders only the named segments, ignoring any cached audio. Use it to fix a single mis-rendered line without re-synthesizing the entire script.
 
 ## Development
 
