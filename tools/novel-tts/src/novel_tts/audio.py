@@ -28,6 +28,7 @@ def _render_one(
         try:
             provider.synthesize(segment, character, destination)
             entry = f"{segment.id}\t{destination.name}\t{pause_after}"
+            print(entry)
             return destination, None, entry
         except RuntimeError as exc:
             last_error = exc

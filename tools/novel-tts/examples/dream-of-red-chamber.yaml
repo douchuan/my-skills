@@ -23,7 +23,7 @@ characters:
 segments:
   - id: opening
     speaker: narrator
-    emotion: serious
+    emotion: neutral
     rate: 0.95
     text: "潇湘馆内，竹影摇曳，林黛玉正倚窗读书。"
     pause_after: 0.8

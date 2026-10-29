@@ -33,7 +33,7 @@ segments:
   # ===== 序幕：遇见乞讨的老乞丐 =====
   - id: opening-meet-beggar
     speaker: narrator
-    emotion: serious
+    emotion: neutral
     rate: 0.95
     text: "有一天，我们碰见一个白胡子穷老头在向人乞讨，和我同行的朋友约瑟夫·达弗朗什竟给了他一个五法郎的银币，我见此大感诧异，于是，他便向我解释说："
     pause_after: 0.6
@@ -48,28 +48,28 @@ segments:
   # ===== 第一部分：拮据的家境 =====
   - id: narrator-family-background
     speaker: narrator
-    emotion: somber
+    emotion: neutral 
     rate: 0.95
     text: "我家原籍勒阿弗尔，家境不富裕，紧巴巴地过着小日子。我父亲有一份差事，每天上班要忙到老晚才能回家，但挣钱不多。家里人口不少，在我上头，还有两个姐姐。"
     pause_after: 0.5
 
   - id: narrator-mother-complains
     speaker: narrator
-    emotion: serious
+    emotion: neutral
     rate: 0.95
     text: "我母亲对这种拮据的生活深感不满，她经常冲着自己的丈夫讲些尖酸刻薄的话，含沙射影、恶毒阴损地进行责难。碰到这种情况，我可怜的父亲总有一个习惯的动作，张开手掌去摸摸额头，似乎要抹去一滴其实并不存在的汗水，嘴里说不出一句话来。每当见他这样，我就感到心酸，我觉得他有一种无可奈何的痛苦。"
     pause_after: 0.5
 
   - id: narrator-thrift-details
     speaker: narrator
-    emotion: neutral
+    emotion: neutral 
     rate: 0.95
     text: "在我们家，处处都得精打细算，力求节俭；有人请吃饭，我们从不敢答应，以免回请。家里的吃穿用，买的都是便宜货，商店里的清仓品。两个姐姐穿的礼服，得由她们自己去做，为了在十五生丁一米的饰带上省点钱，两人要商量好半天。每天，全家老是吃肥油汤与仅仅调料有所变换的牛肉，据说，这么吃既卫生又有营养，可我还是宁愿吃点别的什么。"
     pause_after: 0.4
 
   - id: narrator-clothes-scolding
     speaker: narrator
-    emotion: subdued
+    emotion: neutral
     rate: 0.95
     text: "我衣服上的纽扣弄掉了，裤子撕破了，那都要挨一顿痛骂。"
     pause_after: 0.5
@@ -77,7 +77,7 @@ segments:
   # ===== 第二部分：星期天的防波堤散步 =====
   - id: narrator-sunday-walk
     speaker: narrator
-    emotion: nostalgic
+    emotion: neutral 
     rate: 0.95
     text: "但是，每逢星期天，我们全家都要衣冠楚楚到防波堤上去散步。我父亲身穿礼服，头顶礼帽，戴着手套，用胳膊挽着我母亲，母亲也打扮得五彩缤纷，就像节日里挂满了彩旗的轮船。两个姐姐早早装扮妥善，只等出发的一声令下；可是每到最后一分钟，总能在一家之主的礼服上发现一个忘了擦去的污渍，于是，就得赶快用一块旧布蘸上汽油去把它擦掉。"
     pause_after: 0.5
@@ -91,14 +91,14 @@ segments:
 
   - id: narrator-grand-procession
     speaker: narrator
-    emotion: serious
+    emotion: neutral
     rate: 0.95
     text: "之后，全家隆重上路了。两个姐姐手挽着手，走在前头。她们都已经到了出嫁的年龄，所以双亲大人总喜欢让她们在全城人面前显摆显摆。我走在母亲的左边，父亲则在她右边。我至今还记得我父母亲在此种星期天例行散步中的庄严神态，他们一本正经，举止凝重，腰板笔挺，双腿绷直，如此这般跨步前进，似乎他们的仪态绝非小节，而是关系到某种宏图大业。"
     pause_after: 0.6
 
   - id: narrator-watch-ships
     speaker: narrator
-    emotion: expectant
+    emotion: neutral
     rate: 0.95
     text: "每个星期天，只要看见从远方陌生国度驶回的巨轮进港，我父亲总要一字不差地发出同样的感叹："
     pause_after: 0.4
@@ -120,21 +120,21 @@ segments:
 
   - id: narrator-typical-spendthrift
     speaker: narrator
-    emotion: serious
+    emotion: neutral
     rate: 0.95
     text: "据说，他以前不务正业，也就是说，挥霍过一些钱财，这对穷人家庭来说，要算是莫大的罪过，但对有钱人家而言，吃喝玩乐只不过是糊涂、没脑子而已，旁人顶多笑称他为花花公子。若是生活困苦人家的一个孩子，逼得自己的父母耗尽了家里的储蓄，那简直就是一个坏蛋、一个无赖、一个流氓了！"
     pause_after: 0.5
 
   - id: narrator-morality-note
     speaker: narrator
-    emotion: thoughtful
+    emotion: neutral
     rate: 0.95
     text: "虽然，同是败家行径，但有差异，理应有所区分才是，因一个行为的善恶是非，要视其后果影响而定。"
     pause_after: 0.5
 
   - id: narrator-jules-depleted-inheritance
     speaker: narrator
-    emotion: somber
+    emotion: neutral
     rate: 0.95
     text: "总之，于勒叔叔把自己应得的那份遗产败得精光后，还将我父亲所指望的那一部分侵蚀掉不少。"
     pause_after: 0.5
@@ -149,7 +149,7 @@ segments:
   # ===== 第四部分：两封来信与全家希望 =====
   - id: narrator-first-letter
     speaker: narrator
-    emotion: hopeful
+    emotion: neutral
     rate: 0.95
     text: "一到美洲，我的这位于勒叔叔就做起了说不清的什么买卖，不久，他写信回家说他已经赚了点钱，并希望补偿我父亲因他而受的损失。这封信使得全家人激动万分。于勒，过去被大家认为一文不值的于勒，如今摇身一变，成为了一个正直的人，有良心的人，一个达弗朗什家合格的成员，跟达弗朗什家任何人一样，诚实正派。"
     pause_after: 0.5
@@ -163,7 +163,7 @@ segments:
 
   - id: narrator-second-letter-intro
     speaker: narrator
-    emotion: serious
+    emotion: neutral
     rate: 0.95
     text: "两年以后，我们又收到了第二封信，信上说："
     pause_after: 0.4
@@ -177,14 +177,14 @@ segments:
 
   - id: narrator-gospel-letter
     speaker: narrator
-    emotion: warm
+    emotion: neutral
     rate: 0.95
     text: "他这封信成了家里的福音书，一有机会，我们就拿出来念念，碰见熟人，就拿出来展示展示。"
     pause_after: 0.5
 
   - id: narrator-ten-years-wait
     speaker: narrator
-    emotion: expectant
+    emotion: neutral
     rate: 0.95
     text: "果然，十年之内，于勒叔叔再没有来过信，但随着岁月流逝，我父亲的期望却与日俱增，我母亲也常这么说："
     pause_after: 0.4
@@ -199,7 +199,7 @@ segments:
 
   - id: narrator-repeat-sigh
     speaker: narrator
-    emotion: nostalgic
+    emotion: neutral
     rate: 0.95
     text: "从此，每个星期日，我父亲望见从天边驶近的巨轮，在天空中留下长龙般的黑烟时，总要重复他那句老话："
     pause_after: 0.4
@@ -213,7 +213,7 @@ segments:
 
   - id: narrator-imagine-jules-wave
     speaker: narrator
-    emotion: dreamy
+    emotion: neutral
     rate: 0.95
     text: "而当此时，我们也都似乎看见于勒在船上挥动着手帕，朝我们喊道："
     pause_after: 0.4
@@ -227,7 +227,7 @@ segments:
 
   - id: narrator-plans-villa
     speaker: narrator
-    emotion: hopeful
+    emotion: neutral
     rate: 0.95
     text: "他必将满载而归，我们对此做了种种规划，甚至打算用于勒叔叔的钱，在安古维勒附近的乡村购置一所别墅，我猜想我父亲很可能已就此进行过洽谈。"
     pause_after: 0.5
@@ -235,7 +235,7 @@ segments:
   # ===== 第五部分：二姐求婚与泽西岛之旅 =====
   - id: narrator-sisters-age
     speaker: narrator
-    emotion: subdued
+    emotion: neutral
     rate: 0.95
     text: "我大姐已经二十八岁了，二姐只小两岁，两人都在等着出嫁，这是全家的一大愁事。"
     pause_after: 0.5
@@ -249,7 +249,7 @@ segments:
 
   - id: narrator-accept-and-trip
     speaker: narrator
-    emotion: hopeful
+    emotion: neutral
     rate: 0.95
     text: "我们家赶紧答应了他的求婚，并且决定，婚礼后，全家到泽西岛去作一次旅游。"
     pause_after: 0.6
@@ -263,7 +263,7 @@ segments:
 
   - id: narrator-only-dream
     speaker: narrator
-    emotion: earnest
+    emotion: neutral
     rate: 0.95
     text: "到泽西岛去旅行，成为了我们全家唯一的期望，无时无刻不在的梦想，成为了我们朝思暮想的大事。"
     pause_after: 0.6
@@ -271,21 +271,21 @@ segments:
   # ===== 第六部分：登船出海 =====
   - id: narrator-departure-day
     speaker: narrator
-    emotion: vivid
+    emotion: neutral
     rate: 0.95
     text: "盼来盼去，总算盼到了出发的一天。今天我回想当时的情形，就像昨天刚发生过的事。轮船在格朗维尔码头生火待发。父亲心神不定，慌乱失措，紧张地盯着我们将三个包袱带上船，母亲则不安地紧抓着我未婚大姐的胳臂。自从二姐出嫁后，大姐就像鸡窝里剩下的一只小鸡，形孤影单，似乎有点丧魂落魄了；在我们身后，是新婚夫妇，他们总是落在后面，使得我不时回头去看看。"
     pause_after: 0.5
 
   - id: narrator-ship-departs
     speaker: narrator
-    emotion: elated
+    emotion: neutral
     rate: 0.95
     text: "轮船拉响了汽笛。我们都已经上了船。这时轮船离开堤坝，向海洋远处驶去，风平浪静，海面像绿色大理石一般平整。我们看着海岸迅速朝后退离，莫不洋洋得意，神采飞扬，就像很少出门旅行的人那样。"
     pause_after: 0.6
 
   - id: narrator-father-gasoline
     speaker: narrator
-    emotion: nostalgic
+    emotion: neutral
     rate: 0.95
     text: "我父亲在礼服下挺着他的大肚子，礼服上原有的污渍，当天早上经过家里人的仔细擦拭，都清除掉了。此刻，他随身发散着出门的日子惯常有的汽油味，每逢我闻到这股气味，就知道是星期天了。"
     pause_after: 0.6
@@ -293,14 +293,14 @@ segments:
   # ===== 第七部分：船上吃牡蛎 =====
   - id: narrator-oyster-scene
     speaker: narrator
-    emotion: descriptive
+    emotion: neutral
     rate: 0.95
     text: "突然，他看见两位先生在请两位漂亮的太太吃牡蛎。一个衣衫褴褛的老水手用小刀把牡蛎一一剖开，递给两位先生，再由他们转手给两位太太。太太们享用的姿势很优雅。先用一块精美的手帕将牡蛎托起，再将嘴微微前伸，以免弄脏自己的衣裙。接着，嘴唇又轻又快地一吮，把鲜液吸得精光，然后将空壳扔进海里。"
     pause_after: 0.5
 
   - id: narrator-father-wooed
     speaker: narrator
-    emotion: expectant
+    emotion: neutral
     rate: 0.95
     text: "我父亲显然被如此雅致的景象所打动，在行驶着的海船上吃牡蛎！何其高尚文雅，多么风光有派！于是，他走到我母亲与两个姐姐身边，问道："
     pause_after: 0.4
@@ -337,14 +337,14 @@ segments:
 
   - id: narrator-joseph-left-behind
     speaker: narrator
-    emotion: aggrieved
+    emotion: neutral
     rate: 0.95
     text: "于是，我就只好留在母亲身边，对她此种区别对待甚忿忿不平。我盯着父亲，见他郑重其事地领着两位千金和那乘龙快婿，朝那个衣衫褴褛的老水手走去。"
     pause_after: 0.5
 
   - id: narrator-father-demonstrates
     speaker: narrator
-    emotion: humorous
+    emotion: neutral
     rate: 0.95
     text: "那两位太太刚好离开，我父亲就向我两个姐姐讲解如何吃牡蛎才能不流失掉鲜汁。他拿过来一只，要给她们做示范动作。他试着模仿那两位太太时，不意把牡蛎的汁液全滴在了他的礼服上，于是我听见我母亲咕哝了一句："
     pause_after: 0.4
@@ -360,7 +360,7 @@ segments:
   # ===== 第八部分：发现卖牡蛎的就是于勒 =====
   - id: narrator-father-alarmed
     speaker: narrator
-    emotion: tense
+    emotion: neutral
     rate: 0.9
     text: "但是，父亲突然显得不安起来。他从那儿退离了几步，眼睛盯着拥挤在卖牡蛎老头周围的女儿女婿，然后，骤然朝我和母亲走来。他脸色煞白，目光也很古怪。他小声对我母亲说："
     pause_after: 0.4
@@ -374,7 +374,7 @@ segments:
 
   - id: narrator-mother-stunned
     speaker: narrator
-    emotion: tense
+    emotion: neutral
     rate: 0.95
     text: "母亲愣住了，她问："
     pause_after: 0.3
@@ -389,7 +389,7 @@ segments:
 
   - id: narrator-father-answer
     speaker: narrator
-    emotion: tense
+    emotion: neutral
     rate: 0.95
     text: "父亲回答："
     pause_after: 0.3
@@ -403,7 +403,7 @@ segments:
 
   - id: narrator-mother-panic
     speaker: narrator
-    emotion: alarmed
+    emotion: neutral
     rate: 0.95
     text: "母亲也慌了起来，结结巴巴地说："
     pause_after: 0.3
@@ -418,7 +418,7 @@ segments:
 
   - id: narrator-father-insists
     speaker: narrator
-    emotion: anxious
+    emotion: neutral
     rate: 0.95
     text: "但父亲还钻牛角尖，说："
     pause_after: 0.3
@@ -432,14 +432,14 @@ segments:
 
   - id: narrator-mother-goes-verify
     speaker: narrator
-    emotion: tense
+    emotion: neutral
     rate: 0.95
     text: "听闻此话，母亲就起身走到两个女儿那边去，这时，我也盯着那个人直瞧。他又老又脏，满脸皱纹，两眼直瞧着自己手里的那点活儿。"
     pause_after: 0.5
 
   - id: narrator-mother-returns-shaking
     speaker: narrator
-    emotion: frightened
+    emotion: neutral
     rate: 0.9
     text: "我母亲回来了，我发现她在发抖，她急促地说："
     pause_after: 0.3
@@ -455,21 +455,21 @@ segments:
   # ===== 第九部分：向船长打听 =====
   - id: narrator-father-and-joseph-follow
     speaker: narrator
-    emotion: heartbeat
+    emotion: neutral
     rate: 0.95
     text: "父亲立即就去了，我也跟着他，心里翻腾得特别厉害。"
     pause_after: 0.5
 
   - id: narrator-captain-appearance
     speaker: narrator
-    emotion: descriptive
+    emotion: neutral
     rate: 0.95
     text: "船长是个高个子，干瘦干瘦的，蓄着长长的络腮胡，正在甲板上散步，那不可一世的神气，就好像他是在指挥一艘开往印度的巨型邮轮。"
     pause_after: 0.5
 
   - id: narrator-father-flatter
     speaker: narrator
-    emotion: nervous
+    emotion: neutral
     rate: 0.95
     text: "我父亲走上前去，客客气气地与他搭讪，在问他行业营生情况的时候，又故意讲些恭维奉承话："
     pause_after: 0.4
@@ -490,7 +490,7 @@ segments:
 
   - id: narrator-turn-to-ship
     speaker: narrator
-    emotion: anxious
+    emotion: neutral 
     rate: 0.95
     text: "后来，话题终于绕回到我们乘坐的这艘“快速号”上，又谈到了船上的人员，父亲终于惴惴不安地发问："
     pause_after: 0.4
@@ -504,7 +504,7 @@ segments:
 
   - id: narrator-captain-cold
     speaker: narrator
-    emotion: cold
+    emotion: neutral
     rate: 0.95
     text: "船长终于对这番谈话感到不悦了，他冷冷地回答："
     pause_after: 0.4
@@ -519,9 +519,9 @@ segments:
   # ===== 第十部分：全家恐慌 =====
   - id: narrator-father-white-face
     speaker: narrator
-    emotion: horrified
+    emotion: neutral
     rate: 0.9
-    text: "我父亲的脸色变得惨白，眼神惊慌不安，嗓子哽塞，语不成声："
+    text: "我父亲的脸色变得惨白，眼神惊慌不安，声音哽塞，语不成声："
     pause_after: 0.3
 
   - id: philip-choked
@@ -533,14 +533,14 @@ segments:
 
   - id: narrator-hurries-away
     speaker: narrator
-    emotion: tense
+    emotion: neutral
     rate: 0.95
     text: "他说完赶紧就走，船长见他急忙离去，感到莫名其妙。"
     pause_after: 0.5
 
   - id: narrator-return-to-mother
     speaker: narrator
-    emotion: tense
+    emotion: neutral
     rate: 0.95
     text: "父亲回到母亲身边，脸上惊慌失色，母亲忙安抚他："
     pause_after: 0.3
@@ -555,7 +555,7 @@ segments:
 
   - id: narrator-father-sits-down
     speaker: narrator
-    emotion: numb
+    emotion: neutral
     rate: 0.95
     text: "父亲一屁股坐在长凳上，结结巴巴地说："
     pause_after: 0.3
@@ -569,7 +569,7 @@ segments:
 
   - id: narrator-what-to-do
     speaker: narrator
-    emotion: anxious
+    emotion: neutral
     rate: 0.95
     text: "接着就问："
     pause_after: 0.3
@@ -583,7 +583,7 @@ segments:
 
   - id: narrator-mother-decides
     speaker: narrator
-    emotion: decisive
+    emotion: neutral
     rate: 0.95
     text: "母亲不假思索就答道："
     pause_after: 0.3
@@ -598,7 +598,7 @@ segments:
 
   - id: narrator-father-mutter
     speaker: narrator
-    emotion: daze
+    emotion: neutral
     rate: 0.95
     text: "父亲好像吓呆了，喃喃自语说："
     pause_after: 0.3
@@ -612,7 +612,7 @@ segments:
 
   - id: narrator-mother-furious
     speaker: narrator
-    emotion: anger
+    emotion: neutral
     rate: 0.95
     text: "母亲突然变得非常愤怒，说："
     pause_after: 0.3
@@ -627,7 +627,7 @@ segments:
 
   - id: narrator-mother-continues
     speaker: narrator
-    emotion: serious
+    emotion: neutral
     rate: 0.95
     text: "父亲伸手抹抹额头，就像他每次挨太太的骂时那样。母亲接着又说："
     pause_after: 0.3
@@ -642,7 +642,7 @@ segments:
 
   - id: narrator-mother-hands-coin
     speaker: narrator
-    emotion: somber
+    emotion: neutral
     rate: 0.95
     text: "她站起来，交给我一枚五法郎的银币后，就和父亲两人走开了。"
     pause_after: 0.6
@@ -650,7 +650,7 @@ segments:
   # ===== 第十一部分：约瑟夫付钱给于勒 =====
   - id: narrator-sisters-waiting
     speaker: narrator
-    emotion: tense
+    emotion: neutral
     rate: 0.95
     text: "两个姐姐正在等父亲，见他不来正在纳闷。我对她们说，母亲有点晕船，然后就问那个卖牡蛎的："
     pause_after: 0.4
@@ -664,7 +664,7 @@ segments:
 
   - id: narrator-want-to-call-uncle
     speaker: narrator
-    emotion: tender
+    emotion: neutral
     rate: 0.95
     text: "我这时真想叫他一声叔叔。"
     pause_after: 0.5
@@ -678,14 +678,14 @@ segments:
 
   - id: narrator-joseph-pays
     speaker: narrator
-    emotion: tender
+    emotion: neutral
     rate: 0.95
     text: "我付给他五个法郎，他把零钱找回给我。"
     pause_after: 0.5
 
   - id: narrator-gaze-hands-face
     speaker: narrator
-    emotion: sorrowful
+    emotion: neutral
     rate: 0.9
     text: "我瞧着他的手，那是一个水手满布皱褶的手，我又瞧他的脸，那是一张衰老凄苦的脸，愁云密布，疲惫不堪，我心里默想着："
     pause_after: 0.5
@@ -699,7 +699,7 @@ segments:
 
   - id: narrator-tip
     speaker: narrator
-    emotion: gentle
+    emotion: neutral
     rate: 0.95
     text: "我另给了他十个铜子的小费。他向我道谢："
     pause_after: 0.3
@@ -713,7 +713,7 @@ segments:
 
   - id: narrator-beggar-voice
     speaker: narrator
-    emotion: melancholy
+    emotion: neutral
     rate: 0.95
     text: "他说这话，带着一个穷人得到施舍时的那种声调，我想，他在美洲时一定讨过饭！"
     pause_after: 0.5
@@ -728,7 +728,7 @@ segments:
   # ===== 第十二部分：母亲训斥小费 =====
   - id: narrator-return-change
     speaker: narrator
-    emotion: tense
+    emotion: neutral
     rate: 0.95
     text: "当我把剩下的两法郎还给父亲时，母亲诧异地问道："
     pause_after: 0.3
@@ -743,7 +743,7 @@ segments:
 
   - id: narrator-joseph-defends
     speaker: narrator
-    emotion: firm
+    emotion: neutral
     rate: 0.95
     text: "我理直气壮地宣称："
     pause_after: 0.3
@@ -757,7 +757,7 @@ segments:
 
   - id: narrator-mother-shocked
     speaker: narrator
-    emotion: alarmed
+    emotion: neutral
     rate: 0.95
     text: "母亲吓了一跳，她两眼瞪着我："
     pause_after: 0.3
@@ -779,7 +779,7 @@ segments:
 
   - id: narrator-silence
     speaker: narrator
-    emotion: heavy
+    emotion: neutral
     rate: 0.95
     text: "于是，大家都一声不吭了。"
     pause_after: 0.7
@@ -787,42 +787,42 @@ segments:
   # ===== 尾声：泽西岛、返程与终身不再相见 =====
   - id: narrator-jersey-shadow
     speaker: narrator
-    emotion: desolate
+    emotion: neutral
     rate: 0.95
     text: "这时，在前方，一个紫色的阴影从天边的海面上露了出来，那就是泽西岛。"
     pause_after: 0.6
 
   - id: narrator-last-wish
     speaker: narrator
-    emotion: wistful
+    emotion: neutral
     rate: 0.9
     text: "当轮船驶近堤岸时，我心里产生一股强烈的愿望，想再去看一看我的于勒叔叔，想走近他身边，对他讲些温情的话、安慰的话。"
     pause_after: 0.6
 
   - id: narrator-jules-gone
     speaker: narrator
-    emotion: sorrowful
+    emotion: neutral
     rate: 0.95
     text: "但是，由于这时再没有人去吃牡蛎，他也就撤走了，他一定是回到他栖身的底舱里去了，那该是一个臭气熏天的地方。"
     pause_after: 0.6
 
   - id: narrator-return-steamer
     speaker: narrator
-    emotion: somber
+    emotion: neutral
     rate: 0.95
     text: "我们回来时，为了不再碰见他，改乘了“圣-马洛号”。自打重逢以后，我母亲一直忧心忡忡，焦虑不安。"
     pause_after: 0.7
 
   - id: narrator-never-again
     speaker: narrator
-    emotion: sorrowful 
+    emotion: neutral
     rate: 0.9
     text: "从此以后，我再也没有见过我父亲的这位老弟！"
     pause_after: 0.8
 
   - id: narrator-final-callback
     speaker: narrator
-    emotion: earnest
+    emotion: neutral
     rate: 0.95
     text: "您以后还会见到我拿出五法郎的银币施舍给流浪汉，为什么呢？原因就在这个故事里。"
     pause_after: 0.0
