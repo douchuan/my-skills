@@ -1,0 +1,49 @@
+title: Dream of the Red Chamber - Sample Scene
+
+tts:
+  provider: qwen
+  model: qwen-audio-3.1-tts-flash
+  region: cn-beijing
+  format: mp3
+  sample_rate: 24000
+
+output_dir: output/dream-of-red-chamber
+
+characters:
+  narrator:
+    name: Narrator
+    voice: longanhuan_v3.1
+  baoyu:
+    name: Jia Baoyu
+    voice: longanhuan_v3.1
+  daiyu:
+    name: Lin Daiyu
+    voice: longanlingxin_v3.1
+
+segments:
+  - id: opening
+    speaker: narrator
+    emotion: serious
+    rate: 0.95
+    text: "潇湘馆内，竹影摇曳，林黛玉正倚窗读书。"
+    pause_after: 0.8
+
+  - id: baoyu-greeting
+    speaker: baoyu
+    emotion: gentle
+    rate: 1.0
+    text: "妹妹今日气色倒好些了。"
+    pause_after: 0.4
+
+  - id: daiyu-reply
+    speaker: daiyu
+    emotion: curious
+    rate: 0.95
+    text: "你又来打趣我。今日怎么有空过来？"
+    pause_after: 0.6
+
+  - id: narrator-close
+    speaker: narrator
+    emotion: neutral
+    rate: 0.95
+    text: "宝玉笑着坐下，窗外传来一阵清脆的鸟鸣。"

@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "novel-tts"
+version = "0.2.0"
+description = "A YAML-driven, multi-character novel narration tool."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "dashscope>=1.25.11",
+  "pyyaml>=6.0.2",
+  "rich>=13.9.4",
+  "typer>=0.15.1",
+]
+
+[project.optional-dependencies]
+azure = ["azure-cognitiveservices-speech>=1.42.0"]
+
+[project.scripts]
+novel-tts = "novel_tts.cli:app"
+
+[dependency-groups]
+dev = ["pytest>=8.3.4", "ruff>=0.9.7"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/novel_tts"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
