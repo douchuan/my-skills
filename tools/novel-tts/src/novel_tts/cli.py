@@ -139,68 +139,49 @@ def assemble(
         console.print("[red]ffmpeg is required to assemble audio files.[/red]")
         raise typer.Exit(code=1)
 
-    # Check if all files are the same format — convert to WAV if mixed
-    all_wav = extension == "wav"
-    if not all_wav:
-        with tempfile.TemporaryDirectory(prefix="novel-tts-assemble-") as tmpdir:
-            tmp_dir = Path(tmpdir)
-            wav_files: list[Path] = []
-            for idx, p in enumerate(playlist):
-                wav_out = tmp_dir / f"{idx:04d}.wav"
-                subprocess.run(
-                    [ffmpeg, "-y", "-i", str(p), "-ar", str(loaded.tts.sample_rate), str(wav_out)],
-                    check=True,
-                    capture_output=True,
-                )
-                wav_files.append(wav_out)
+    # Convert all files to a uniform WAV format for reliable concatenation
+    with tempfile.TemporaryDirectory(prefix="novel-tts-assemble-") as tmpdir:
+        tmp_dir = Path(tmpdir)
+        wav_files: list[Path] = []
+        for idx, p in enumerate(playlist):
+            wav_out = tmp_dir / f"{idx:04d}.wav"
+            subprocess.run(
+                [ffmpeg, "-y", "-i", str(p), "-ar", str(loaded.tts.sample_rate), "-ac", "1", str(wav_out)],
+                check=True,
+                capture_output=True,
+            )
+            wav_files.append(wav_out)
 
-            concat_file = tmp_dir / "list.txt"
-            concat_file.write_text(
-                "".join(f"file '{p.as_posix()}'\n" for p in wav_files),
-                encoding="utf-8",
-            )
-            subprocess.run(
-                [
-                    ffmpeg,
-                    "-y",
-                    "-f",
-                    "concat",
-                    "-safe",
-                    "0",
-                    "-i",
-                    str(concat_file),
-                    "-c",
-                    "copy",
-                    str(out_path),
-                ],
-                check=True,
-                capture_output=True,
-            )
-    else:
-        with tempfile.TemporaryDirectory(prefix="novel-tts-assemble-") as tmpdir:
-            tmp_dir = Path(tmpdir)
-            concat_file = tmp_dir / "list.txt"
-            concat_file.write_text(
-                "".join(f"file '{p.as_posix()}'\n" for p in playlist),
-                encoding="utf-8",
-            )
-            subprocess.run(
-                [
-                    ffmpeg,
-                    "-y",
-                    "-f",
-                    "concat",
-                    "-safe",
-                    "0",
-                    "-i",
-                    str(concat_file),
-                    "-c",
-                    "copy",
-                    str(out_path),
-                ],
-                check=True,
-                capture_output=True,
-            )
+        concat_file = tmp_dir / "list.txt"
+        concat_file.write_text(
+            "".join(f"file '{p.as_posix()}'\n" for p in wav_files),
+            encoding="utf-8",
+        )
+
+        # Encode to the target format (not just copy)
+        if extension == "wav":
+            codec_args = ["-c", "copy"]
+        elif extension == "mp3":
+            codec_args = ["-c:a", "libmp3lame", "-q:a", "2"]
+        else:
+            codec_args = ["-c:a", "pcm_s16le"]
+
+        subprocess.run(
+            [
+                ffmpeg,
+                "-y",
+                "-f",
+                "concat",
+                "-safe",
+                "0",
+                "-i",
+                str(concat_file),
+                *codec_args,
+                str(out_path),
+            ],
+            check=True,
+            capture_output=True,
+        )
 
     # Clean up temporary silence files
     for index, segment in enumerate(loaded.segments):
