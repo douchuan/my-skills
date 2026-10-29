@@ -56,7 +56,9 @@ def render(
         console.print(f"[red]Rendering failed:[/red] {exc}")
         raise typer.Exit(code=1) from exc
     if result.new_count > 0:
-        console.print(f"[green]Rendered {result.new_count} new segments to {loaded.output_dir}[/green]")
+        console.print(
+            f"[green]Rendered {result.new_count} new segments to {loaded.output_dir}[/green]"
+        )
     else:
         console.print(f"[green]All {len(result.paths)} segments already cached.[/green]")
 
@@ -78,7 +80,9 @@ def regenerate(
     except Exception as exc:
         console.print(f"[red]Rendering failed:[/red] {exc}")
         raise typer.Exit(code=1) from exc
-    console.print(f"[green]Re-rendered {result.new_count} segment(s) to {loaded.output_dir}[/green]")
+    console.print(
+        f"[green]Re-rendered {result.new_count} segment(s) to {loaded.output_dir}[/green]"
+    )
 
 
 @app.command()
@@ -95,7 +99,9 @@ def play(script: Path):
 @app.command(name="assemble")
 def assemble(
     script: Path,
-    force: bool = typer.Option(False, "--force", help="Regenerate missing segments before assembling."),
+    force: bool = typer.Option(
+        False, "--force", help="Regenerate missing segments before assembling."
+    ),
     output: str | None = typer.Option(None, "--output", "-o", help="Override output filename."),
 ):
     """Assemble rendered segments into a single audio file named after the script."""
@@ -113,7 +119,9 @@ def assemble(
         if not seg_path.exists():
             missing.append(segment.id)
     if missing:
-        console.print(f"[red]Missing audio for segments: {', '.join(missing)}. Run render first.[/red]")
+        console.print(
+            f"[red]Missing audio for segments: {', '.join(missing)}. Run render first.[/red]"
+        )
         raise typer.Exit(code=1)
 
     # Build the ordered playlist with silence for pauses
@@ -146,7 +154,17 @@ def assemble(
         for idx, p in enumerate(playlist):
             wav_out = tmp_dir / f"{idx:04d}.wav"
             subprocess.run(
-                [ffmpeg, "-y", "-i", str(p), "-ar", str(loaded.tts.sample_rate), "-ac", "1", str(wav_out)],
+                [
+                    ffmpeg,
+                    "-y",
+                    "-i",
+                    str(p),
+                    "-ar",
+                    str(loaded.tts.sample_rate),
+                    "-ac",
+                    "1",
+                    str(wav_out),
+                ],
                 check=True,
                 capture_output=True,
             )

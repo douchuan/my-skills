@@ -1,7 +1,6 @@
 """Load and validate YAML narration scripts."""
 
 from pathlib import Path
-from typing import Any
 
 import yaml
 

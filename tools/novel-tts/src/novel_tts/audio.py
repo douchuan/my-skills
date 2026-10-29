@@ -13,11 +13,14 @@ from pathlib import Path
 @dataclass(frozen=True)
 class RenderResult:
     """Result of rendering a script."""
-    paths: list[Path]        # all segment audio files (cached + new)
-    new_count: int           # how many were actually rendered this call
+
+    paths: list[Path]  # all segment audio files (cached + new)
+    new_count: int  # how many were actually rendered this call
 
 
-def _render_one(provider, segment, character, destination, pause_after) -> tuple[Path, Exception | None, str | None]:
+def _render_one(
+    provider, segment, character, destination, pause_after
+) -> tuple[Path, Exception | None, str | None]:
     """Render a single segment with retry on rate limits. Returns (destination, error_or_None, manifest_entry_or_None)."""
     max_retries = 3
     last_error = None
@@ -31,13 +34,15 @@ def _render_one(provider, segment, character, destination, pause_after) -> tuple
             # Retry on rate limit errors with backoff
             if "RateLimitError" in type(exc).__name__ or "Throttling" in str(exc):
                 if attempt < max_retries - 1:
-                    time.sleep(2 ** attempt)
+                    time.sleep(2**attempt)
                     continue
             break
     return destination, last_error, None
 
 
-def render_script(script, force: bool = False, segment_ids: set[str] | None = None, max_workers: int = 2) -> RenderResult:
+def render_script(
+    script, force: bool = False, segment_ids: set[str] | None = None, max_workers: int = 2
+) -> RenderResult:
     from novel_tts.providers import create_provider
 
     provider = create_provider(

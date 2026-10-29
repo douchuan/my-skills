@@ -99,7 +99,7 @@ _EMOTION_INSTRUCTIONS = {
     "desolate": "Speak in a bleak, empty tone, as if surrounded by loneliness and ruin.",
     "wistful": "Speak with a gentle, bittersweet longing, as if remembering something dear and lost.",
     "mournful": "Speak in a grieving, sorrowful tone, as if in mourning for someone or something lost.",
-    "decisive": "Speak with clear determination and resolve, without hesitation."
+    "decisive": "Speak with clear determination and resolve, without hesitation.",
 }
 
 _DIALECT_INSTRUCTIONS = {
@@ -162,7 +162,10 @@ class QwenTTSProvider(TTSProvider):
             destination.unlink(missing_ok=True)
             # Provide a clearer hint when the voice is incompatible with the model.
             if "InvalidParameter" in str(exc) or "411" in str(exc):
-                if self.config.model == "qwen-audio-3.1-tts-flash" and character.voice not in _KNOWN_VOICES_31:
+                if (
+                    self.config.model == "qwen-audio-3.1-tts-flash"
+                    and character.voice not in _KNOWN_VOICES_31
+                ):
                     raise RuntimeError(
                         f"Voice '{character.voice}' is not compatible with model '{self.config.model}'. "
                         f"Use a _v3.1 voice (e.g. {', '.join(sorted(_KNOWN_VOICES_31))})."
