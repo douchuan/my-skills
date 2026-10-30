@@ -76,6 +76,55 @@ _DIALECT_INSTRUCTIONS = {
     "shandong": "Speak in Shandong dialect (山东话).",
 }
 
+# https://docs.bailian.console.aliyun.com/zh/model-studio/realtime-tts-user-guide#12884a10929p9
+#
+# ##示例
+#
+# 以下文本先使用兴奋语气，在指定位置插入笑声后继续合成正文：
+#
+# > [excited]今天的天气真不错！[laughing]我们一起出去玩吧！
+#
+# 以下文本在第二句切换为兴奋语气：
+#
+# > [serious]请注意安全事项。[excited]好了，现在让我们开始吧！
+
+_RICH_LABELS = {
+    "ctrl_tags": [
+        "[sad]",  # 悲伤
+        "[amazed]",  # 惊叹
+        "[deep and loud shouting]",  # 深沉大声呐喊
+        "[trembling]",  # 颤抖
+        "[angry]",  # 愤怒
+        "[excited]",  # 兴奋
+        "[sarcastic]",  # 讽刺
+        "[curious]",  # 好奇
+        "[like dracula]",  # 吸血血鬼语气
+        "[bored]",  # 无聊
+        "[tired]",  # 疲倦
+        "[scornful]",  # 轻蔑
+        "[shouting]",  # 大喊
+        "[asmr]",  # ASMR 轻声
+        "[panicked]",  # 惊慌
+        "[mischievously]",  # 调皮
+        "[empathetic]",  # 共情
+        "[whispers]",  # 低沉耳语
+        "[reluctantly]",  # 不情愿
+        "[crying]",  # 哭泣
+        "[serious]",  # 严肃
+        "[very slowly]",  # 非常缓慢
+        "[very fast]",  # 非常快速
+    ],
+    "language_tags": [
+        "[gasp]",  # 倒吸气
+        "[sighing]",  # 叹息
+        "[clears throat]",  # 清嗓
+        "[giggles]",  # 咦咯咯笑
+        "[laughing]",  # 大笑
+        "[cough]",  # 咳嗽
+        "[snorts]",  # 哼声、嗤笑
+    ],
+}
+
 
 class QwenTTSProvider(TTSProvider):
     """Generate one audio file per script segment using the DashScope SDK."""
