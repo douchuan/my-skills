@@ -61,7 +61,7 @@ def render_script(
     for segment in script.segments:
         extension = "wav" if script.tts.format == "wav" else script.tts.format
         destination = script.output_dir / f"{segment.id}.{extension}"
-        force_this = force or (segment_ids is not None and segment.id in segment_ids)
+        force_this = segment.id in segment_ids if segment_ids is not None else force
         entry = f"{segment.id}\t{destination.name}\t{segment.pause_after}"
         if destination.exists() and destination.stat().st_size > 0 and not force_this:
             rendered.append(destination)
